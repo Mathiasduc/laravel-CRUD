@@ -7,7 +7,7 @@
 		</div>
 		<div class="two wide required field">
 			<label for="price">Prix</label>
-			<input type="text" name="price">
+			<input type="number" name="price">
 		</div>
 		<div class="seven wide  field">
 			<label for="description">Description</label>
@@ -15,7 +15,7 @@
 		</div>
 		<div class="two wide required field">
 			<label for="stock">Stock</label>
-			<input type="text" name="stock">
+			<input type="number" name="stock">
 		</div>
 		<button class="ui right labeled icon button">Créer<i class="right arrow icon"></i></button>
 	</div>

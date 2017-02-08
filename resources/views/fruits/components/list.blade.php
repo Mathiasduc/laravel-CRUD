@@ -19,12 +19,18 @@
 			<td>{{$fruit->stock}}<br>
 				<div style="display: inline-flex;">
 					<form action="/products/stock/{{$fruit->id}}/delete/1" method="POST">
-					{{csrf_field()}}
+						{{csrf_field()}}
 						<button class="ui icon button"><i class="minus icon"></i></button>
 					</form>
- 					<form action="/products/stock/{{$fruit->id}}/add/1" method="POST">
-					{{csrf_field()}}
+					<form action="/products/stock/{{$fruit->id}}/add/1" method="POST">
+						{{csrf_field()}}
 						<button class="ui icon button"><i class="plus icon"></i></button>
+					</form>
+					<form action="/products/delete/{{$fruit->id}}" method="post">
+						<input type="hidden" name="id" value="{{$fruit->id}}">
+						{{ method_field('DELETE') }}
+						{{csrf_field()}}
+						<button class="ui icon button"><i class="delete icon"></i></button>
 					</form>
 				</div>
 			</td>

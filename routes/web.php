@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FruitController@getIndex');
 
-Route::get('/products', '\App\Http\Controllers\FruitController@getIndex');
+Route::get('/products', 'FruitController@getIndex');
 
-Route::get('/products/show/{id}', '\App\Http\Controllers\FruitController@getShow');
+Route::get('/products/show/{id}', 'FruitController@getShow');
 
-Route::post('products/stock/{id}/{action}/{quantity}',
-	'\App\Http\Controllers\FruitController@getStockModif');
+Route::post('/products/stock/{id}/{action}/{quantity}','FruitController@getStockModif');
 
-Route::post('products/addProduct',
-	'\App\Http\Controllers\FruitController@addNewProduct');
+Route::post('/products/addProduct', 'FruitController@addNewProduct');
+Route::delete('/products/delete/{id}', 'FruitController@deleteProduct');

@@ -33,9 +33,26 @@ class FruitController extends Controller
 		return back();
 	}
 
+	/**
+	 * Add a new product by mass assignement
+	 *
+	 * @param Request $request
+	 * @return redirect to FruitController@getIndex
+	 **/
 	public function addNewProduct(Request $request)
 	{
 		Fruit::create($request->all());
+		return redirect()->action('FruitController@getIndex');
+	}
+	/**
+	 * Delete the product in database from his id
+	 *
+	 * @param Request $request
+	 * @return redirect FruitController@getIndex
+	 **/
+	public function deleteProduct($id)
+	{
+		Fruit::destroy($id);
 		return redirect()->action('FruitController@getIndex');
 	}
 }
