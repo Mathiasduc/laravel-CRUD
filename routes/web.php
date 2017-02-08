@@ -17,7 +17,7 @@ Route::get('/products', 'FruitController@getIndex');
 
 Route::get('/products/show/{id}', 'FruitController@getShow');
 
-Route::post('/products/stock/{id}/{action}/{quantity}','FruitController@getStockModif');
+Route::put('/products/stock/{id}/{action}/{quantity}','FruitController@getStockModif');
 
 Route::post('/products/addProduct', 'FruitController@addNewProduct');
 Route::delete('/products/delete/{id}', 'FruitController@deleteProduct');
