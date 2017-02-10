@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Http\Response;
 use App\Fruit;
 
 class FruitController extends Controller
@@ -20,17 +21,18 @@ class FruitController extends Controller
 		return view('fruits.show', ['fruit'=>$fruit]);
 	}
 
-	public function getStockModif($id, $action, $quantity)
-	{
+	public function getStockModif(Request $request, $id, $quantity)
+	{	
 		$fruit = Fruit::find($id);
-		if ($action === "add") {
+		if($request->method() === 'PUT'){
 			$fruit->stock += intval($quantity);
-			$fruit->save();
-		}elseif ($action === "delete") {
+			$fruit->save();			
+		}else{
 			$fruit->stock -= intval($quantity);
 			$fruit->save();
 		}
-		return back();
+		//response($fruit->stock)
+		return $fruit->stock;
 	}
 
 	/**
@@ -42,7 +44,7 @@ class FruitController extends Controller
 	public function addNewProduct(Request $request)
 	{
 		Fruit::create($request->all());
-		return redirect()->action('FruitController@getIndex');
+		return redirect()->route('home');
 	}
 	/**
 	 * Delete the product in database from his id
@@ -53,6 +55,6 @@ class FruitController extends Controller
 	public function deleteProduct($id)
 	{
 		Fruit::destroy($id);
-		return redirect()->action('FruitController@getIndex');
+		return redirect()->route('home');
 	}
 }

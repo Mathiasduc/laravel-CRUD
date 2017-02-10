@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', 'FruitController@getIndex');
+Route::get('/', 'FruitController@getIndex')->name('home');
 
 Route::get('/products', 'FruitController@getIndex');
 
 Route::get('/products/show/{id}', 'FruitController@getShow');
 
-Route::put('/products/stock/{id}/{action}/{quantity}','FruitController@getStockModif');
+Route::match(['put','delete'],'/products/stock/id/{id}/quantity/{quantity}','FruitController@getStockModif');
 
 Route::post('/products/addProduct', 'FruitController@addNewProduct');
-Route::delete('/products/delete/{id}', 'FruitController@deleteProduct');
+Route::delete('/products/id/{id}', 'FruitController@deleteProduct');
